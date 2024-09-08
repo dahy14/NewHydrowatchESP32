@@ -2,21 +2,34 @@
 #define FIREBASE_OPERATIONS_H
 
 #include <FirebaseClient.h>
+#include "AsyncCallback.h"
+#include "Callbacks.h"
+#include "globalVars.h"
 
 bool taskComplete = false;
+unsigned long currentMillis;
+unsigned long previousMillis = 0;
+unsigned long interval = 2500;
 
-void startFirebaseOperations()
+void getSolenoid()
 {
-    if (app.ready() && !taskComplete)
+    currentMillis = millis();
+    String dataPath = "/SolenoidData/Tenant" + String(tenantId) + "/solenoid";  // tenantId from globalVars.h
+    String taskUID = "getTenant" + String(tenantId);
+    if(app.ready() && !taskComplete)
     {
+        //run once
         taskComplete = true;
-
-        // Perform GET operations
-        Database.get(aClient, "/test/int", asyncCB, false, "getTask1");
-        Database.get(aClient, "/test/string", asyncCB, false, "getTask2");
-
-        // You can add SET operations here too
+        Database.get(aClient, dataPath, solenoidCallback, false, "getTenant" + String(tenantId)); // solenoideCallback from Callbacks.h
     }
+    // current and previous millis are declared in pinouts.h
+    if (currentMillis - previousMillis >= interval && app.ready()) {
+       
+        Serial.println(currentMillis);
+        previousMillis = currentMillis;
+        Database.get(aClient, dataPath, solenoidCallback, false, taskUID); // solenoideCallback from Callbacks.h
+    }  
+  
 }
 
 void handleFirebase()
