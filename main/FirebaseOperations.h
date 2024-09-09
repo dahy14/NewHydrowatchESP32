@@ -29,9 +29,17 @@ void getSolenoid()
         previousMillis = currentMillis;
         Database.get(aClient, dataPath, solenoidCallback, false, taskUID); // solenoideCallback from Callbacks.h
     }  
-  
 }
 
+#include "volume.h"
+#include "NTPtime.h"
+void setVolume(float pulse) {
+    float vol = volume(pulse); // in mL
+    String timestamp = getTime();
+    Serial.print(timestamp);
+    Serial.println("");
+    delay(1000);
+}
 void handleFirebase()
 {
     // Run Firebase async tasks
