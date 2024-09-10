@@ -6,11 +6,12 @@
 
 const char *ntpServer = "pool.ntp.org";
 
-// Timer variables (send new readings every three minutes)
-unsigned long sendDataPrevMillis = 0;
-unsigned long timerDelay = 5000;
-
-
+// For configuring Time
+const char *ntpServer1 = "time.google.com";
+const char *ntpServer2 = "pool.ntp.org";
+const long gmtOffset_sec = 25200;
+const int daylightOffset_sec = 3600;
+// const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Rome including daylight adjustment rules (optional)
 
 String getTime()
 {
@@ -44,4 +45,10 @@ void timeavailable(struct timeval *t)
     getTime();
 }
 
+
+void initNTP() {
+    sntp_set_time_sync_notification_cb(timeavailable);
+    sntp_servermode_dhcp(1);
+    configTime(gmtOffset_sec, daylightOffset_sec, ntpServer1, ntpServer2);
+}
 #endif

@@ -32,4 +32,5 @@ void solenoidCallback(AsyncResult &aResult)
 {
    doSolenoidCB(aResult);
 }
+
 #endif 

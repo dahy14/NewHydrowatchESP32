@@ -11,7 +11,6 @@ extern int lcdSCLPin = 22;
 // tenantIds 
 extern int tenantId = 2;
 
-
 // global vars 
 extern volatile long pulse = 0; 
 #endif 

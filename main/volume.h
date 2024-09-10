@@ -1,15 +1,11 @@
 #ifndef VOLUME_H
 #define VOLUME_H
 
-
-float vol;
-float volumeInCubic;
-float CONSTANT = 2.70270;
-
-float volume(float pulse) {
-    vol = CONSTANT * pulse;  // the magic number
-    volumeInCubic = vol / 1000000;
-    return vol;
+float volume(long p) {
+    float vol = 2.70270 * p;  // the magic number
+    float volInLiter = vol / 1000;
+    float volumeInCubic = vol / 1000000;
+    return volInLiter;
 }
 
 #endif 
