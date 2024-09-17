@@ -16,6 +16,7 @@ extern LiquidCrystal_I2C lcd(0x27, 16, 2); // change depending on lcd
 
 // global vars 
 extern volatile long pulse = 0; 
+extern bool online = true; 
 
 
 void initPinmode() {

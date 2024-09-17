@@ -2,6 +2,7 @@
 #define FIREBASE_OPERATIONS_H
 
 #include <FirebaseClient.h>
+
 #include "AsyncCallback.h"
 #include "Callbacks.h"
 #include "globalVars.h"
@@ -27,17 +28,13 @@ void getSolenoid()
     // string paths and UIDS /////////////////////////////////////////
     String dataPath = "/SolenoidData/Tenant" + String(tenantId) + "/solenoid";  // tenantId from globalVars.h
     String taskUID = "getTenant" + String(tenantId);
-    // run once
+        // run once
     if(app.ready() && !taskComplete)
-    {
-        //run once
+    {   //run once
         taskComplete = true;
         Database.get(aClient, dataPath, solenoidCallback,  false, "getTenant" + String(tenantId)); // solenoideCallback from Callbacks.h // no explicit calls for aClient but it is declared in FirebaseSetup.h
     }
-    
     if (currentMillis - prevSolenoidMillis >= intervalSolenoid && app.ready()) {
-       
-
         prevSolenoidMillis = currentMillis;
         Database.get(aClient, dataPath, solenoidCallback, false, taskUID); // solenoideCallback from Callbacks.h
     }  
@@ -63,7 +60,7 @@ void setVolume() {
 
     if (currentMillis - prevUsersDataMillis >= intervalUsersData && app.ready()) {
     prevUsersDataMillis = currentMillis;
-    Database.set<float>(aClient, consPath, vol, asyncCB, consUID);
+    Database.set<float>(aClient, consPath, vol, setCallback, consUID);
     Database.set<String>(aClient, timestampPath, timestamp, setCallback, timeUID);
     }
 }

@@ -32,9 +32,9 @@ void getOpLCD() {
 }
 
 void setOpLCD() {
-    lcd.setCursor(9, 0);
+    lcd.setCursor(8, 0);
     lcd.print("Set: ");
-    lcd.setCursor(14, 0);
+    lcd.setCursor(13, 0);
 }
 
 #endif

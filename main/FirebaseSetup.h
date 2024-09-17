@@ -5,8 +5,8 @@
 #include "AsyncCallback.h"
 
 
-#define API_KEY "AIzaSyBPp9CrojsQ4N7xrRRKE8Y_hc514ijjBgE"
-#define DATABASE_URL "https://hy2c-f612d-default-rtdb.asia-southeast1.firebasedatabase.app"
+#define API_KEY "AIzaSyCWZ0VcS-8Cjh0exCpIUuzx9czdUJPLefA"
+#define DATABASE_URL "https://coms-stateled-default-rtdb.asia-southeast1.firebasedatabase.app"
 
 DefaultNetwork network;
 #define USER_EMAIL "ac@ac.com"
@@ -23,7 +23,7 @@ WiFiSSLClient ssl_client;
 
 
 using AsyncClient = AsyncClientClass;
-AsyncClient aClient(ssl_client, getNetwork(network));
+extern AsyncClient aClient(ssl_client, getNetwork(network));
 
 UserAuth user_auth(API_KEY, USER_EMAIL, USER_PASSWORD);
 FirebaseApp app;
