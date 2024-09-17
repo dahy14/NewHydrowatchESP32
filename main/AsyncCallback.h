@@ -2,6 +2,7 @@
 #define ASYNC_CALLBACK_H
 
 #include <FirebaseClient.h>
+// code for testing async callback... can exclude on documentation 
 void printResult(AsyncResult &aResult)
 {
     if (aResult.isEvent())
