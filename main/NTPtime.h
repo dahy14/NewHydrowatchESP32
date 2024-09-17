@@ -7,7 +7,7 @@
 const char *ntpServer = "pool.ntp.org";
 
 // For configuring Time
-const char *ntpServer1 = "time.google.com";
+const char *ntpServer1 = "time.google.com"; // ginawa kong gugel yung primamry ntp server, in my experience mas mabilis sya magrespond
 const char *ntpServer2 = "pool.ntp.org";
 const long gmtOffset_sec = 25200;
 const int daylightOffset_sec = 3600;
