@@ -4,14 +4,7 @@
 #include <WiFi.h>
 #include <WiFiMulti.h>
 
-// #define WIFI_SSID "Naypes Residence"
-// #define WIFI_PASSWORD "BWCTnaPLDT1234!"
-
 WiFiMulti wifiMulti;
-
-#define WIFI_SSID "Naypes Residence TPLink"
-#define WIFI_PASSWORD "Pass123!"
-
 
 void initWiFi()
 {
@@ -19,7 +12,7 @@ void initWiFi()
 
    // Add list of wifi networks wifMulliti ==10 seconds bootup. 
   wifiMulti.addAP("Naypes Residence", "BWCTnaPLDT1234!");
-  wifiMulti.addAP("naypes Residence TPLink", "Pass123!");
+  wifiMulti.addAP("Naypes Residence TPLink", "Pass123!");
   wifiMulti.addAP("Hg", "zxcvbnmz");
 
   // WiFi.scanNetworks will return the number of networks found
@@ -52,15 +45,13 @@ void initWiFi()
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
   }
-
-    // faster but inflexible,  only one way to connect...
-    // WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-    // while (WiFi.status() != WL_CONNECTED)
-    // {
-    //     Serial.print(".");
-    //     delay(300);
-    // }
-
+  // faster but inflexible,  only one way to connect...
+  // WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  // while (WiFi.status() != WL_CONNECTED)
+  // {
+  //     Serial.print(".");
+  //     delay(300);
+  // }
 }
 
 #endif // WIFI_SETUP_H
