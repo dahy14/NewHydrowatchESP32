@@ -13,6 +13,8 @@ void initWiFi()
    // Add list of wifi networks wifMulliti ==10 seconds bootup. 
   wifiMulti.addAP("Naypes Residence", "BWCTnaPLDT1234!");
   wifiMulti.addAP("Naypes Residence TPLink", "Pass123!");
+  wifiMulti.addAP("Note10 Fully Paid", "paconnect!");
+  wifiMulti.addAP("KEWK", "confusedjellyfish1");
   wifiMulti.addAP("Hg", "zxcvbnmz");
 
   // WiFi.scanNetworks will return the number of networks found
